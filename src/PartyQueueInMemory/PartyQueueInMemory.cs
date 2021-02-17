@@ -15,7 +15,7 @@ namespace PartyQueueInMemory {
             return null;
         }
 
-        public bool Enqueue<TEntity>(TEntity party) {
+        public bool Enqueue<TEntity>(TEntity party) where TEntity : Party<Room> {
             s_queue.Enqueue(party);
             return true;
         }
