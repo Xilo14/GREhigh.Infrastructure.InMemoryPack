@@ -8,14 +8,14 @@ namespace PartyQueueInMemory {
     public class PartyQueueInMemory : IPartyQueue {
         private static readonly ConcurrentQueue<Party<Room>> s_queue = new();
 
-        Party<Room> IPartyQueue.Dequeue() {
+        public Party<Room> Dequeue() {
             s_queue.TryDequeue(out var party);
             if (party != null)
                 return party;
             return null;
         }
 
-        bool IPartyQueue.Enqueue<TEntity>(TEntity party) {
+        public bool Enqueue<TEntity>(TEntity party) {
             s_queue.Enqueue(party);
             return true;
         }

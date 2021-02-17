@@ -8,14 +8,14 @@ namespace UpdateRoomQueueInMemory {
     public class UpdateRoomQueueInMemory : IUpdateRoomQueue {
         private static readonly ConcurrentQueue<UpdateQueueRecord> s_queue = new();
 
-        UpdateQueueRecord IUpdateRoomQueue.Dequeue() {
+        public UpdateQueueRecord Dequeue() {
             s_queue.TryDequeue(out var update);
             if (update != null)
                 return update;
             return null;
         }
 
-        bool IUpdateRoomQueue.Enqueue(UpdateQueueRecord update) {
+        public bool Enqueue(UpdateQueueRecord update) {
             s_queue.Enqueue(update);
             return true;
         }
