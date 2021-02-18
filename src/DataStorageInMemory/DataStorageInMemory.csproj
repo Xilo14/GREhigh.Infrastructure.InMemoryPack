@@ -1,5 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\GREhigh\src\GREhigh.InfrastructureBase\GREhigh.InfrastructureBase.csproj" />
+    <ProjectReference Include="..\..\..\GREhigh\src\GREhigh.DomainBase\GREhigh.DomainBase.csproj" />
+    <ProjectReference Include="..\..\..\GREhigh\src\GREhigh.Utility\GREhigh.Utility.csproj" />
+    <ProjectReference Include="..\..\..\GREhigh\src\GREhigh.RoomRegistries\GREhigh.RoomRegistries.csproj" />
+    <ProjectReference Include="..\..\..\GREhigh\src\GREhigh.RoomStaffBase\GREhigh.RoomStaffBase.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
