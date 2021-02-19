@@ -4,7 +4,7 @@ using GREhigh.DomainBase;
 using GREhigh.Infrastructure.Interfaces;
 using GREhigh.Utility;
 
-namespace PartyQueueInMemory {
+namespace GREhigh.Infrastructure.PartyQueueInMemory {
     public class PartyQueueInMemory : IPartyQueue {
         private static readonly ConcurrentQueue<Party<Room>> s_queue = new();
 

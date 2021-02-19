@@ -6,7 +6,7 @@ using GREhigh.DomainBase;
 using GREhigh.Infrastructure.Interfaces;
 using GREhigh.Utility;
 
-namespace RoomSynchronizerInMemory {
+namespace GREhigh.Infrastructure.RoomSynchronizerInMemory {
     public class RoomSynchronizerInMemory : IRoomSynchronizer {
         private static readonly ConcurrentDictionary<Room, bool> s_lockDict = new();
         private static readonly object s_locker = new object();

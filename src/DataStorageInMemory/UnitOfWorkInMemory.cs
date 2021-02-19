@@ -4,7 +4,7 @@ using GREhigh.Infrastructure.Interfaces;
 using GREhigh.RoomRegistries;
 using GREhigh.RoomStaffBase.Interfaces;
 
-namespace DataStorageInMemory {
+namespace GREhigh.Infrastructure.DataStorageInMemory {
     public class UnitOfWorkInMemory : IUnitOfWorkGREhigh {
         private RepositoriesRegistry _repositoriesRegistry;
         private RepositoryInMemory<Player> _playersRepository = new();

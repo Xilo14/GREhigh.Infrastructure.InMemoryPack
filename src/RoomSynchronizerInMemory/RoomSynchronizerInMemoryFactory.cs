@@ -1,9 +1,9 @@
 using GREhigh.Infrastructure.Interfaces;
 
-namespace RoomSynchronizerInMemory {
+namespace GREhigh.Infrastructure.RoomSynchronizerInMemory {
     public class RoomSynchronizerInMemoryFactory :
-        IInfrastructureFactory<RoomSynchronizerInMemory> {
-        public RoomSynchronizerInMemory GetInfrastructure() {
+        IInfrastructureFactory<IRoomSynchronizer> {
+        public IRoomSynchronizer GetInfrastructure() {
             return RoomSynchronizerInMemory.Instance;
         }
     }

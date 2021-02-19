@@ -1,6 +1,6 @@
 using GREhigh.Infrastructure.Interfaces;
 
-namespace DataStorageInMemory {
+namespace GREhigh.Infrastructure.DataStorageInMemory {
     public class UnitOfWorkInMemoryFactory : IInfrastructureFactory<IUnitOfWorkGREhigh> {
         public IUnitOfWorkGREhigh GetInfrastructure() {
             return new UnitOfWorkInMemory();

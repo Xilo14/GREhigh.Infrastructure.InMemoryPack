@@ -4,7 +4,7 @@ using GREhigh.DomainBase;
 using GREhigh.Infrastructure.Interfaces;
 using GREhigh.Utility;
 
-namespace UpdateRoomQueueInMemory {
+namespace GREhigh.Infrastructure.UpdateRoomQueueInMemory {
     public class UpdateRoomQueueInMemory : IUpdateRoomQueue {
         private static readonly ConcurrentQueue<UpdateQueueRecord> s_queue = new();
 

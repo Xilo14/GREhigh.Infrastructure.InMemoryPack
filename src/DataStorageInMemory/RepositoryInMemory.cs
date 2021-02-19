@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using GREhigh.Infrastructure.Interfaces;
 
-namespace DataStorageInMemory {
+namespace GREhigh.Infrastructure.DataStorageInMemory {
     public class RepositoryInMemory<T> : IRepository<T> {
         private static readonly List<T> s_list = new();
 

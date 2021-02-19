@@ -1,8 +1,8 @@
 using GREhigh.Infrastructure.Interfaces;
 
-namespace PartyQueueInMemory {
-    public class PartyQueueInMemoryFactory : IInfrastructureFactory<PartyQueueInMemory> {
-        public PartyQueueInMemory GetInfrastructure() {
+namespace GREhigh.Infrastructure.PartyQueueInMemory {
+    public class PartyQueueInMemoryFactory : IInfrastructureFactory<IPartyQueue> {
+        public IPartyQueue GetInfrastructure() {
             return PartyQueueInMemory.Instance;
         }
     }
