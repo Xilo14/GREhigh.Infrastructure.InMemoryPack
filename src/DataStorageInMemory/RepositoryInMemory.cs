@@ -7,7 +7,7 @@ using GREhigh.Infrastructure.Interfaces;
 
 namespace GREhigh.Infrastructure.DataStorageInMemory {
     public class RepositoryInMemory<T> : IRepository<T> {
-        private static readonly List<T> s_list = new();
+        protected static readonly List<T> s_list = new();
 
         public void Delete(object id) {
             throw new NotImplementedException();

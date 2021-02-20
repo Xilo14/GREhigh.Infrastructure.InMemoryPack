@@ -6,16 +6,16 @@ using GREhigh.Utility;
 
 namespace GREhigh.Infrastructure.PartyQueueInMemory {
     public class PartyQueueInMemory : IPartyQueue {
-        private static readonly ConcurrentQueue<Party<Room>> s_queue = new();
+        private static readonly ConcurrentQueue<Party> s_queue = new();
 
-        public Party<Room> Dequeue() {
+        public Party Dequeue() {
             s_queue.TryDequeue(out var party);
             if (party != null)
                 return party;
             return null;
         }
 
-        public bool Enqueue<TEntity>(TEntity party) where TEntity : Party<Room> {
+        public bool Enqueue<TEntity>(TEntity party) where TEntity : Party {
             s_queue.Enqueue(party);
             return true;
         }

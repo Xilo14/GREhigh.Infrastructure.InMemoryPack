@@ -11,7 +11,7 @@ namespace GREhigh.Infrastructure.DataStorageInMemory {
         private RepositoryInMemory<Transaction> _transactionsRepository = new();
 
         public void Dispose() {
-            throw new NotImplementedException();
+
         }
 
         public IRepository<Player> GetPlayerRepository() {
@@ -26,8 +26,9 @@ namespace GREhigh.Infrastructure.DataStorageInMemory {
 
         }
 
-        public bool SetRepositoryRegistry(RepositoriesRegistry repositoryRegistry) {
-            _repositoriesRegistry = repositoryRegistry;
+
+        public bool SetRepositoryRegistry<T>(T repositoryRegistry) where T : AbstractRegistry<IInfrastructureFactory<IRoomRepository>> {
+            _repositoriesRegistry = repositoryRegistry as RepositoriesRegistry;
             return true;
         }
 
@@ -41,8 +42,6 @@ namespace GREhigh.Infrastructure.DataStorageInMemory {
             return false;
         }
 
-        bool IUnitOfWorkGREhigh.SetRepositoryRegistry<T>(T repositoryRegistry) {
-            throw new NotImplementedException();
-        }
+
     }
 }
