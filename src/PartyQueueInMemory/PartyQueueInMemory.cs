@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Linq;
 using GREhigh.DomainBase;
 using GREhigh.Infrastructure.Interfaces;
 using GREhigh.Utility;
@@ -20,6 +21,11 @@ namespace GREhigh.Infrastructure.PartyQueueInMemory {
             return true;
         }
 
+        public bool IsPartyUniq<TEntity>(TEntity party) where TEntity : Party {
+            return !s_queue
+                        .SelectMany(x => x.Players)
+                        .Any(x => party.Players.Contains(x));
+        }
 
         private PartyQueueInMemory() { }
         public static PartyQueueInMemory Instance {
