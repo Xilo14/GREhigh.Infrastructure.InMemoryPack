@@ -2,7 +2,7 @@ using GREhigh.Infrastructure.Interfaces;
 
 namespace GREhigh.Infrastructure.DataStorageInMemory {
     public class UnitOfWorkInMemoryFactory : IInfrastructureFactory<IUnitOfWorkGREhigh> {
-        public IUnitOfWorkGREhigh GetInfrastructure() {
+        public virtual IUnitOfWorkGREhigh GetInfrastructure() {
             return new UnitOfWorkInMemory();
         }
     }

@@ -6,9 +6,9 @@ using GREhigh.RoomStaffBase.Interfaces;
 
 namespace GREhigh.Infrastructure.DataStorageInMemory {
     public class UnitOfWorkInMemory : IUnitOfWorkGREhigh {
-        private RepositoriesRegistry _repositoriesRegistry;
-        private RepositoryInMemory<Player> _playersRepository = new();
-        private RepositoryInMemory<Transaction> _transactionsRepository = new();
+        protected RepositoriesRegistry _repositoriesRegistry;
+        protected RepositoryInMemory<Player> _playersRepository = new();
+        protected RepositoryInMemory<Transaction> _transactionsRepository = new();
 
         public void Dispose() {
 
