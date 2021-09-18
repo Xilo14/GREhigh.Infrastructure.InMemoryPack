@@ -16,7 +16,7 @@ using System.Collections;
 
 namespace GREhigh.Infrastructure.DataStorageInMemory {
     public class RepositoryInMemory<T> : IRepository<T>
-            where T : IHaveId<ulong> {
+            where T : class, IHaveId<ulong> {
         protected static readonly List<T> s_list = new();
 
         public void Delete(object id) {
@@ -27,6 +27,11 @@ namespace GREhigh.Infrastructure.DataStorageInMemory {
             lock (s_list) {
                 s_list.Remove(entityToDelete);
             }
+        }
+
+        public void Delete<T1>(T1 entityToDelete)
+        where T1 : class, IHaveId<ulong> {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<T> Get(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = "") {
@@ -51,8 +56,15 @@ namespace GREhigh.Infrastructure.DataStorageInMemory {
             throw new NotImplementedException();
         }
 
-        public T GetByID(ulong id) {
+        public IEnumerable<T1> Get<T1>(
+            Expression<Func<T1, bool>> filter = default, Func<IQueryable<T1>,
+             IOrderedQueryable<T1>> orderBy = default, string includeProperties = "") {
             throw new NotImplementedException();
+        }
+
+        public T GetByID(ulong id) {
+            return s_list
+                .Where(x => x.Id == id).FirstOrDefault();
         }
 
         public IEnumerator<T> GetEnumerator() {
@@ -84,8 +96,37 @@ namespace GREhigh.Infrastructure.DataStorageInMemory {
             }
         }
 
-        public void Update(T entityToUpdate) {
+        public void Insert<T1>(T1 entity)
+        where T1 : class, IHaveId<ulong> {
+            lock (s_list) {
+                ulong maxId;
+                if (s_list.Count == 0)
+                    maxId = 0;
+                else
+                    maxId = s_list.Max(s => s.Id);
+                entity.Id = maxId + 1;
+                s_list.Add(entity as T);
+            }
+        }
 
+        public void Insert<T1>(IEnumerable<T1> entityList)
+        where T1 : class, IHaveId<ulong> {
+            lock (s_list) {
+                ulong maxId;
+                if (s_list.Count == 0)
+                    maxId = 0;
+                else
+                    maxId = s_list.Max(s => s.Id);
+                foreach (var entity in entityList)
+                    entity.Id = ++maxId;
+                s_list.AddRange(entityList as IEnumerable<T>);
+            }
+        }
+
+
+        public void Update<T1>(T1 entityToUpdate)
+        where T1 : class, IHaveId<ulong> {
+            throw new NotImplementedException();
         }
 
         IEnumerator IEnumerable.GetEnumerator() {
