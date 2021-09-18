@@ -27,21 +27,20 @@ namespace GREhigh.Infrastructure.DataStorageInMemory {
         }
 
 
-        public bool SetRepositoryRegistry<T>(T repositoryRegistry) where T : AbstractRegistry<IInfrastructureFactory<IRoomRepository>> {
+        public bool SetRepositoryRegistry<T>(T repositoryRegistry) where T : AbstractRegistry<IInfrastructureFactory<IRepository<Room>>> {
             _repositoriesRegistry = repositoryRegistry as RepositoriesRegistry;
             return true;
         }
 
-        public bool TryGetRoomRepository<T>(Type typeRoom, out T repository)
-            where T : IRepository<Room> {
+        public bool TryGetRoomRepository<T1, T2>(Type typeRoom, out T1 repository)
+            where T1 : IRepository<T2>
+            where T2 : Room {
             if (_repositoriesRegistry != null) {
-                repository = (T)_repositoriesRegistry.GetForRoom(typeRoom).GetInfrastructure();
+                repository = (T1)_repositoriesRegistry.GetForRoom(typeRoom).GetInfrastructure();
                 return true;
             }
             repository = default;
             return false;
         }
-
-
     }
 }
