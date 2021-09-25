@@ -16,7 +16,7 @@ using System.Collections;
 
 namespace GREhigh.Infrastructure.DataStorageInMemory {
     public class RepositoryInMemory<T> : IRepository<T>
-            where T : class, IHaveId<ulong> {
+            where T : class, IHaveId<long> {
         protected static readonly List<T> s_list = new();
 
         public void Delete(object id) {
@@ -30,7 +30,7 @@ namespace GREhigh.Infrastructure.DataStorageInMemory {
         }
 
         public void Delete<T1>(T1 entityToDelete)
-        where T1 : class, IHaveId<ulong> {
+        where T1 : class, IHaveId<long> {
             throw new NotImplementedException();
         }
 
@@ -62,7 +62,7 @@ namespace GREhigh.Infrastructure.DataStorageInMemory {
             throw new NotImplementedException();
         }
 
-        public T GetByID(ulong id) {
+        public T GetByID(long id) {
             return s_list
                 .Where(x => x.Id == id).FirstOrDefault();
         }
@@ -73,7 +73,7 @@ namespace GREhigh.Infrastructure.DataStorageInMemory {
 
         public void Insert(T entity) {
             lock (s_list) {
-                ulong maxId;
+                long maxId;
                 if (s_list.Count == 0)
                     maxId = 0;
                 else
@@ -85,7 +85,7 @@ namespace GREhigh.Infrastructure.DataStorageInMemory {
 
         public void Insert(IEnumerable<T> entityList) {
             lock (s_list) {
-                ulong maxId;
+                long maxId;
                 if (s_list.Count == 0)
                     maxId = 0;
                 else
@@ -97,9 +97,9 @@ namespace GREhigh.Infrastructure.DataStorageInMemory {
         }
 
         public void Insert<T1>(T1 entity)
-        where T1 : class, IHaveId<ulong> {
+        where T1 : class, IHaveId<long> {
             lock (s_list) {
-                ulong maxId;
+                long maxId;
                 if (s_list.Count == 0)
                     maxId = 0;
                 else
@@ -110,9 +110,9 @@ namespace GREhigh.Infrastructure.DataStorageInMemory {
         }
 
         public void Insert<T1>(IEnumerable<T1> entityList)
-        where T1 : class, IHaveId<ulong> {
+        where T1 : class, IHaveId<long> {
             lock (s_list) {
-                ulong maxId;
+                long maxId;
                 if (s_list.Count == 0)
                     maxId = 0;
                 else
@@ -125,7 +125,7 @@ namespace GREhigh.Infrastructure.DataStorageInMemory {
 
 
         public void Update<T1>(T1 entityToUpdate)
-        where T1 : class, IHaveId<ulong> {
+        where T1 : class, IHaveId<long> {
             throw new NotImplementedException();
         }
 

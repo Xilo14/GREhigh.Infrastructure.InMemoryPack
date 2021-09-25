@@ -4,7 +4,7 @@ using GREhigh.Utility.Interfaces;
 
 namespace DataStorageInMemory {
     public class RepositoryInMemoryFactory<T> : IInfrastructureFactory<RepositoryInMemory<T>>
-        where T : class, IHaveId<ulong> {
+        where T : class, IHaveId<long> {
         // public IRepository<T> GetInfrastructure() {
         //     return new RepositoryInMemory<T>();
         // }
